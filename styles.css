@@ -1,0 +1,31 @@
+html {
+  overflow: auto;
+  background-color: #4D585C;
+}
+
+pre {
+  padding: 0;
+  background-color: inherit;
+  font-family: inherit;
+  color: white;
+}
+
+.panel-block {
+  flex-direction: column;
+  align-items: unset;
+  color: white;
+}
+
+a.panel-block:hover {
+  background-color: #2F738C;
+  color: white;
+}
+
+.panel-heading {
+  background-color: #4ABE9B;
+  color: white;
+}
+
+li:nth-child(odd) {
+  background-color: #677B82;
+}

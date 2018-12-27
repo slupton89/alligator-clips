@@ -1,14 +1,42 @@
-// Modules to control application life and create native browser window
-const {app, BrowserWindow} = require('electron')
 
-// Keep a global reference of the window object, if you don't, the window will
-// be closed automatically when the JavaScript object is garbage collected.
+const {app, BrowserWindow, Tray} = require('electron')
+const path = require('path');
+
 let mainWindow
+let tray = null
+var iconPath = path.join(__dirname, './icon/crocodile.png');
 
 function createWindow () {
-  // Create the browser window.
-  mainWindow = new BrowserWindow({width: 800, height: 600})
+  mainWindow = new BrowserWindow({width: 300, height: 400, frame: false, icon: iconPath})
 
+  tray = new Tray(iconPath)
+  tray.setToolTip('AlligatorClips')
+
+  if(process.platform !== "darwin"){
+    var trayMenu = [{
+      label: 'Quit',
+      click: function () {
+        app.quit()
+      }
+    }];
+    var trayMenu = Menu.buildFromTemplate(trayMenu);
+    tray.setContextMenu(trayMenu);
+  }
+
+
+  tray.on('click', () => {
+    mainWindow.isVisible() ? mainWindow.hide() : mainWindow.show();
+  });
+
+  mainWindow.on('show', () => {
+    tray.setHighlightMode('always')
+    const bounds = tray.getBounds()
+    const y = bounds.y === 0 ? 0 : (bounds.y - 400);
+    mainWindow.setPosition(bounds.x - 150, y);
+  })
+  mainWindow.on('hide', () => {
+    tray.setHighlightMode('never')
+  })
   // and load the index.html of the app.
   mainWindow.loadFile('index.html')
 
@@ -48,3 +76,4 @@ app.on('activate', function () {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+

@@ -2,14 +2,32 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Hello World!</title>
+    <title>AlligatorClips</title>
+    <link rel="stylesheet" href="./node_modules/bulma/css/bulma.css">
+    <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <h1>Hello World!</h1>
-    <!-- All of the Node.js APIs are available in this renderer process. -->
-    We are using Node.js <script>document.write(process.versions.node)</script>,
-    Chromium <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.
+    <main id="app">
+      <nav class="panel">
+        <p class="panel-heading has-text-centered">
+          {{title}}
+        </p>
+        <ul>
+          <li
+          class="item"
+          v-for="item in revHistory"
+          @click="itemClicked(item)">
+            <a class="panel-block">
+              <pre>
+                {{'\n' + item.text}}
+              </pre>
+              <small>{{item.time}}</small>
+            </a>
+          </li>
+        </ul>
+
+      </nav>
+    </main>
 
     <script>
       // You can also require other files to run in this process
