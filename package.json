@@ -4,21 +4,27 @@
   "version": "1.0.0",
   "description": "A minimal clipboard history application",
   "main": "main.js",
+  "build": {
+    "appId": "AlligatorClips",
+    "mac": {
+      "category": "clipboardmanager"
+    }
+  },
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
   },
   "repository": "https://github.com/electron/electron-quick-start",
   "keywords": [
     "Electron",
-    "quick",
-    "start",
-    "tutorial",
-    "demo"
+    "clipboard"
   ],
   "author": "GitHub",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "^3.0.0"
+    "electron": "^3.0.0",
+    "electron-builder": "^20.38.4"
   },
   "dependencies": {
     "bulma": "^0.7.2",
