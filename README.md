@@ -19,7 +19,7 @@ This project was built with the following:
 **_Main Dropdown_**
 The application has one main dropdown to keep it simple. The dropdown can also be resized if you need to view long entries 
 
-![Main](https://shane-lupton.com/img/aliclips.789a7022.png)
+![Main](https://github.com/slupton89/alligator-clips/raw/master/ac.png)
 
 ## Description of Key Parts of Project
 
